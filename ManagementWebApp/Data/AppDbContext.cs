@@ -26,7 +26,7 @@ namespace ManagementWebApp.Data
             base.OnModelCreating(modelBuilder);
         }
 
-
+        // Migration
         public DbSet<Actor> Actors { get; set; }
 
         public DbSet<Movie> Movies { get; set; }

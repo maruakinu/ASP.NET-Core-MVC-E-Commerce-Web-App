@@ -85,3 +85,4 @@ C:\Users\MarloAquino\source\repos\ManagementWebApp\ManagementWebApp\bin\Debug\ne
 C:\Users\MarloAquino\source\repos\ManagementWebApp\ManagementWebApp\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\MarloAquino\source\repos\ManagementWebApp\ManagementWebApp\obj\Debug\net6.0\ManagementWebApp.csproj.AssemblyReference.cache
 C:\Users\MarloAquino\source\repos\ManagementWebApp\ManagementWebApp\obj\Debug\net6.0\ManagementWebApp.csproj.CopyComplete
+C:\Users\MarloAquino\source\repos\ManagementWebApp\ManagementWebApp\obj\Debug\net6.0\ManagementWebApp.sourcelink.json

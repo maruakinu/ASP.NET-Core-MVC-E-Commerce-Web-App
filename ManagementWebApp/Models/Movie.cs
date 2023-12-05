@@ -13,13 +13,13 @@ namespace ManagementWebApp.Models
 
         public string Description { get; set; }
 
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         public string ImageUrl { get; set; }
 
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDAte { get; set; }
+        public DateTime EndDate { get; set; }
 
         public MovieCategory MovieCategory { get; set; }
 
