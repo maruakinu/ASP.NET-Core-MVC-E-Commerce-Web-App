@@ -1,20 +1,42 @@
 ﻿using ManagementWebApp.Data;
+using ManagementWebApp.Data.Services;
+using ManagementWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManagementWebApp.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IActorsService _service;
 
-        public ActorsController(AppDbContext context)
+        public ActorsController(IActorsService service)
         {
-            _context = context;
+            _service = service;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Actors.ToList();
+            var data = await _service.GetAll();
             return View(data);
         }
+
+        //Get : Actors/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("profilePictureURL", "FullName", "Bio")] Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+
+            _service.Add(actor);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

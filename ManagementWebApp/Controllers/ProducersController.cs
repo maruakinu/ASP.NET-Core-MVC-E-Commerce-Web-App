@@ -16,7 +16,15 @@ namespace ManagementWebApp.Controllers
         public async Task<IActionResult> Index()
         {
             var allProducers = await _context.Producers.ToListAsync();
-            return View();
+            return View(allProducers);
         }
+
+        // This methos will call the NewPageView file in the View folder
+        // If its not indicated in the return it will call the index file
+     //   public async Task<IActionResult> Index()
+     //   {
+     //       var allProducers = await _context.Producers.ToListAsync();
+     //       return View("NewPageView", allProducers);
+     //   }
     }
 }

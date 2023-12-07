@@ -16,7 +16,7 @@ namespace ManagementWebApp.Controllers
         public async Task<IActionResult> Index()
         {
             var allCinemas = await _context.Cinemas.ToListAsync();
-            return View();
+            return View(allCinemas);
         }
     }
 }
