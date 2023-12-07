@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ManagementWebApp.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace ManagementWebApp.Models
 {
-    public class Producer
+    public class Producer : IEntityBase
     {
 
         [Key]

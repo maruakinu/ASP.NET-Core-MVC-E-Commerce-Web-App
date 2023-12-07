@@ -3,7 +3,7 @@ using ManagementWebApp.Models;
 
 namespace ManagementWebApp.Data.Services
 {
-    public interface IActorsService : IEntityBaseRepository<Actor>
+    public interface IProducersService : IEntityBaseRepository<Producer>
     {
     }
 }
