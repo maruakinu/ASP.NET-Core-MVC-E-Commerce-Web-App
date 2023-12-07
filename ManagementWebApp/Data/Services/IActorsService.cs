@@ -5,14 +5,14 @@ namespace ManagementWebApp.Data.Services
     public interface IActorsService
     {
         //Task is for Asynchrounous if you dont want it as Asynch just remove Task<> 
-        Task<IEnumerable<Actor>> GetAll();
+        Task<IEnumerable<Actor>> GetAllAsync();
 
-        Actor GetById(int id);
+        Task<Actor> GetByIdAsync(int id);
 
-        void Add(Actor actor);
+        Task AddAsync(Actor actor);
 
-        Actor Update(int id, Actor newActor);
+        Task<Actor> UpdateAsync(int id, Actor newActor);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
