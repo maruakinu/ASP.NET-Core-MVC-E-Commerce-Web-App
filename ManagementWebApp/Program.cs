@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 //Services configuration
 builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
+builder.Services.AddScoped<ICinemasService, CinemasService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
