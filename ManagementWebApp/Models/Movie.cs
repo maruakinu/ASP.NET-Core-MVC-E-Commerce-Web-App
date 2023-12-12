@@ -1,10 +1,11 @@
-﻿using ManagementWebApp.Data.Enums;
+﻿using ManagementWebApp.Data.Base;
+using ManagementWebApp.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ManagementWebApp.Models
 {
-    public class Movie
+    public class Movie : IEntityBase
     {
         [Key]
         public int Id { get; set; }

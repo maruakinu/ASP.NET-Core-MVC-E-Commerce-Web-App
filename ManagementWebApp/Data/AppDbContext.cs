@@ -1,9 +1,10 @@
 ﻿using ManagementWebApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ManagementWebApp.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -27,15 +28,15 @@ namespace ManagementWebApp.Data
         }
 
         // Migration
-        public DbSet<Actor>? Actors { get; set; }
+        public DbSet<Actor> Actors { get; set; }
 
-        public DbSet<Movie>? Movies { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
-        public DbSet<Actor_Movie>? Actors_Movies { get; set; }
+        public DbSet<Actor_Movie> Actors_Movies { get; set; }
 
-        public DbSet<Cinema>? Cinemas { get; set; }
+        public DbSet<Cinema> Cinemas { get; set; }
 
-        public DbSet<Producer>? Producers { get; set; }
+        public DbSet<Producer> Producers { get; set; }
 
     }
 }
