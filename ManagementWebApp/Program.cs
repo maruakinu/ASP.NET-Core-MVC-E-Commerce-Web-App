@@ -1,6 +1,7 @@
 
 using ManagementWebApp.Data;
 using ManagementWebApp.Data.Services;
+using ManagementWebApp.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,15 @@ builder.Services.AddScoped<IActorsService, ActorsService>();
 builder.Services.AddScoped<IProducersService, ProducersService>();
 builder.Services.AddScoped<ICinemasService, CinemasService>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
+
+//Authentication and Authorization
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -34,7 +44,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//Authentication and Authorization
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",
@@ -42,5 +54,5 @@ app.MapControllerRoute(
 
 //Seed database
 AppDbInitializer.Seed(app);
-
+AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
 app.Run();
