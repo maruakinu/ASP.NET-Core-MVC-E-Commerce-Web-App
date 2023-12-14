@@ -1,10 +1,13 @@
 ﻿using ManagementWebApp.Data;
 using ManagementWebApp.Data.Services;
+using ManagementWebApp.Data.Static;
 using ManagementWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManagementWebApp.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ActorsController : Controller
     {
         private readonly IActorsService _service;
@@ -13,6 +16,8 @@ namespace ManagementWebApp.Controllers
         {
             _service = service;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
@@ -39,6 +44,7 @@ namespace ManagementWebApp.Controllers
         }
 
         //Get : Actors/Details/id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var actorDetails = await _service.GetByIdAsync(id);

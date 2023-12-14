@@ -1,11 +1,14 @@
 ﻿using ManagementWebApp.Data;
 using ManagementWebApp.Data.Services;
+using ManagementWebApp.Data.Static;
 using ManagementWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ManagementWebApp.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class ProducersController : Controller
     {
         private readonly IProducersService _service;
@@ -14,6 +17,7 @@ namespace ManagementWebApp.Controllers
         {
             _service = service;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducers = await _service.GetAllAsync();
@@ -21,6 +25,7 @@ namespace ManagementWebApp.Controllers
         }
 
         //Get : Actors/Details/id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var producerDetails = await _service.GetByIdAsync(id);
